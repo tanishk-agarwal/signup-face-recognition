@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signup Page</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container jumbotron">
+		<div class="row">
+			<div class="col-md-4">
+				
+				
+			</div>
+			<div class="col-md-4">
+				<form method="post" enctype="multipart/form-data">
+	
+					<div class="form-group">
+						<!-- CSS -->
+						<style>
+						#my_camera{
+ 						width: 320px;
+ 						height: 240px;
+ 						border: 1px solid black;
+						}
+                        #myDIV1 {
+                        position: absolute;
+                        width: 140px;
+                        height: 140px;
+                        z-index: 25;
+                        top: 27%;
+                        left: 47%;
+                        transform: translate(-50%, -50%);
+                        border: 2px solid red;
+                    }
+						</style>
+
+						<div id="my_camera"></div>
+						<br>
+						<input type=button value="Turn On Camera" onClick="configure()">
+						<input type=button value="Take Snapshot" onClick="take_snapshot()">
+						<br>
+ 						<p>This Image will get saved in Database </p>
+						<div id="results">
+                        <div id="myDIV1">
+                        
+                        </div>
+                        </div>
+ 				        <input type="hidden" name="userimage" value="" id="results2">
+						<!-- Webcam.min.js -->
+
+						<!-- Configure a few settings and attach camera -->
+						<script language="JavaScript">
+ 						
+ 						function configure(){
+						Webcam.set({
+						width: 320,
+						height: 240,
+						image_format: 'jpeg',
+						jpeg_quality: 90
+						});
+						Webcam.attach( '#my_camera' );
+						}
+
+						function take_snapshot() {
+ 
+ 						// take snapshot and get image data
+ 						Webcam.snap( function(data_uri) {
+  						// display results in page
+  						//document.getElementById('results2').innerHTML = '<img id="imageprev" src="'+data_uri+'" name="lauser" />';
+                          document.getElementById('results').innerHTML = 
+					'<img  "height="200px" src="'+data_uri+'"/>';
+                        document.getElementById('#my_camera').style.display = "none";
+  						document.getElementById('my_camera').style.width = "0px";
+  						document.getElementById('my_camera').style.height = "0px";
+  						document.getElementById('my_camera').style.border = "0px";
+                        document.getElementById('myDIV1').style.display = "none";
+                        document.getElementById('#my_camera').style.display = "flex";
+  						var base64image =  document.getElementById("imageprev").src;
+  						document.getElementById('results2').value=base64image;
+  						Webcam.reset();
+  						} );
+						}
+						</script>
+
+					</div>   				
+					
+					<div class="form-group">
+						<a href="index.html">
+						<button class="form-control btn btn-primary"><b>Log in</b></button>
+						</a>
+					</div>
+					
+
+					
+
+				</form>
+                <div class="form-group">
+                        <a href="sign.html">
+						<input type="submit" value="Signup" class="form-control btn btn-primary">
+                        </a>
+				</div>
+			</div>
+            <div class="col-md-4">
+				
+				
+			</div>
+			
+		</div>
+	</div>
+    <script type="text/javascript" src="myjs.js"></script>
+    <script type="text/javascript" src="jsmain.js"></script>
+</body>
+</html>
